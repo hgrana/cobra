@@ -10,6 +10,8 @@
     <!-- my scripts -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
     <script src="js/main.js"></script>
+    <script src="js/apple.js"></script>
+    <script src="js/snake.js"></script>
 </head>
 <body>
     <h1>Cobra</h1>
@@ -22,6 +24,7 @@
 </body>
 <script>
     $("#startGame").click(() => {
+        gameConfig.gameState = "running";
         generateMap();
     });
 </script>
