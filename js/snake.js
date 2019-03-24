@@ -19,40 +19,46 @@ function generateSnake(movement = null) {
 //Snake's primal function;
 function snakeMovement() {
     var movementInterval = setInterval(() => {
-        let currentPos;
+        let snakeHead = [];
 
         switch (snakeConfig.direction) {
             case 0: // Snake is going UP
-                currentPos = [...snakeConfig.snakePos];
+                snakeHead = [...snakeConfig.snakePos[0]];
+                snakeHead[1] -= 1;
 
-                for (let i = 1; i < snakeConfig.snakePos.length; i++) {
-                    snakeConfig.snakePos[i] = currentPos[i - 1];
-                }
-
-                snakeConfig.snakePos[0][1] -= 1;
+                moveSnake(snakeHead);
 
                 generateSnake();
 
                 break;
 
             case 1: // Snake is going RIGHT
-                currentPos = [...snakeConfig.snakePos];
+                snakeHead = [...snakeConfig.snakePos[0]];
+                snakeHead[0] += 1;
 
-                for (let i = 1; i < snakeConfig.snakePos.length; i++) {
-                    snakeConfig.snakePos[i] = currentPos[i - 1];
-                }
-
-                snakeConfig.snakePos[0][0] += 1;
+                moveSnake(snakeHead);
 
                 generateSnake();
 
                 break;
 
             case 2: // Snake is going DOWN
+                snakeHead = [...snakeConfig.snakePos[0]];
+                snakeHead[1] += 1;
+
+                moveSnake(snakeHead);
+
+                generateSnake();
 
                 break;
 
             case 3: // Snake is going LEFT
+                snakeHead = [...snakeConfig.snakePos[0]];
+                snakeHead[0] -= 1;
+
+                moveSnake(snakeHead);
+
+                generateSnake();
 
                 break;
 
@@ -60,4 +66,9 @@ function snakeMovement() {
                 break;
         }
     }, gameConfig.gameSpeed);
+}
+
+function moveSnake(head) {
+    snakeConfig.snakePos.pop();
+    snakeConfig.snakePos.unshift(head);
 }

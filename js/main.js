@@ -3,13 +3,13 @@
  */
 
 const gameConfig = {
-    gameSpeed: 1000,
+    gameSpeed: 250,
     gameState: "stopped"
 }
 
 const snakeConfig = {
     snakePos: [[15, 16], [15, 17], [15, 18], [15, 19], [15, 20]],
-    direction: 1 // 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
+    direction: 0 // 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT
 }
 
 const mapConfig = {
