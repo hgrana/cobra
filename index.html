@@ -27,5 +27,32 @@
         gameConfig.gameState = "running";
         generateMap();
     });
+
+    $(document).keydown((key) => {
+        switch (key.keyCode) {
+            case upKey:
+                snakeConfig.direction = 0;    
+
+                break;
+            
+            case rightKey:
+                snakeConfig.direction = 1;
+
+                break;
+
+            case downKey:
+                snakeConfig.direction = 2;
+
+                break;
+
+            case leftKey:
+                snakeConfig.direction = 3;
+
+                break;
+        
+            default:
+                break;
+        }
+    })
 </script>
 </html>

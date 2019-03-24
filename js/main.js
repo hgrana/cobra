@@ -2,6 +2,11 @@
  * Main JS file.
  */
 
+const leftKey = 37;
+const rightKey = 39;
+const upKey = 38;
+const downKey = 40;
+
 const gameConfig = {
     gameSpeed: 250,
     gameState: "stopped"
