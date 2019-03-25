@@ -19,45 +19,33 @@ function generateSnake(movement = null) {
 //Snake's primal function;
 function snakeMovement() {
     var movementInterval = setInterval(() => {
-        let snakeHead = [];
+        let snakeHead = [...snakeConfig.snakePos[0]];
 
         switch (snakeConfig.direction) {
-            case 0: // Snake is going UP
-                snakeHead = [...snakeConfig.snakePos[0]];
+            case 0: // Snake is going UP                
                 snakeHead[1] -= 1;
-
                 moveSnake(snakeHead);
-
                 generateSnake();
 
                 break;
 
             case 1: // Snake is going RIGHT
-                snakeHead = [...snakeConfig.snakePos[0]];
                 snakeHead[0] += 1;
-
                 moveSnake(snakeHead);
-
                 generateSnake();
 
                 break;
 
             case 2: // Snake is going DOWN
-                snakeHead = [...snakeConfig.snakePos[0]];
                 snakeHead[1] += 1;
-
                 moveSnake(snakeHead);
-
                 generateSnake();
 
                 break;
 
             case 3: // Snake is going LEFT
-                snakeHead = [...snakeConfig.snakePos[0]];
                 snakeHead[0] -= 1;
-
                 moveSnake(snakeHead);
-
                 generateSnake();
 
                 break;
