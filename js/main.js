@@ -38,6 +38,7 @@ function generateMap() {
 
     // Call function to generate Snake;
     generateSnake(true);
+    generateApple();
 
     // Remove the button
     $("#startGame").remove();
