@@ -8,8 +8,9 @@ const upKey = 38;
 const downKey = 40;
 
 const gameConfig = {
-    gameSpeed: 250,
-    gameState: "stopped"
+    gameSpeed: 100,
+    gameState: "stopped",
+    gameInterval: null
 }
 
 const snakeConfig = {
@@ -19,6 +20,10 @@ const snakeConfig = {
 
 const mapConfig = {
     tileQty: 901
+}
+
+const appleConfig = {
+    location: 0
 }
 
 function generateMap() {
