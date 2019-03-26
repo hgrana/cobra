@@ -8,8 +8,10 @@ const upKey = 38;
 const downKey = 40;
 
 const gameConfig = {
-    gameSpeed: 250,
-    gameState: "stopped"
+    gameSpeed: 100,
+    state: "stopped",
+    interval: null,
+    points: 0
 }
 
 const snakeConfig = {
@@ -21,9 +23,20 @@ const mapConfig = {
     tileQty: 901
 }
 
+const appleConfig = {
+    location: 0
+}
+
 function generateMap() {
     var x = 1,
         y = 1;
+
+    //Clear the map before the render and set the vars;
+    if (gameConfig.state === "gameover") {
+        $("#map").html("");
+        snakeConfig.snakePos = [[15, 16], [15, 17], [15, 18], [15, 19], [15, 20]];
+        snakeConfig.direction = 0;
+    }
 
     for (let i = 1; i < mapConfig.tileQty; i++) {
         $("#map").append("<span id='tile-" + i + "' x-tile='" + x + "' y-tile='" + y + "' class='mapTile'></span>");
@@ -40,8 +53,11 @@ function generateMap() {
     generateSnake(true);
     generateApple();
 
-    // Remove the button
-    $("#startGame").remove();
+    // Hide the button
+    $("#startGame").hide();
+
+    // Set the game state to running;
+    gameConfig.state = "running";    
 }
 
 // Count points and print it;
