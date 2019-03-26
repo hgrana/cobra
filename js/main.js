@@ -2,16 +2,17 @@
  * Main JS file.
  */
 
-const leftKey = 37;
-const rightKey = 39;
-const upKey = 38;
-const downKey = 40;
-
 const gameConfig = {
     gameSpeed: 100,
     state: "stopped",
     interval: null,
-    points: 0
+    points: 0,
+    controls: {
+        leftKey: 37,
+        rightKey: 39,
+        upKey: 38,
+        downKey: 40
+    }
 }
 
 const snakeConfig = {
@@ -34,8 +35,11 @@ function generateMap() {
     //Clear the map before the render and set the vars;
     if (gameConfig.state === "gameover") {
         $("#map").html("");
+        $("#points span").html("0");
+
         snakeConfig.snakePos = [[15, 16], [15, 17], [15, 18], [15, 19], [15, 20]];
         snakeConfig.direction = 0;
+        gameConfig.points = 0;
     }
 
     for (let i = 1; i < mapConfig.tileQty; i++) {

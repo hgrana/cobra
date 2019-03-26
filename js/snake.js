@@ -57,28 +57,37 @@ function snakeMovement() {
 }
 
 function moveSnake(head) {
-    if (head[0] < 1 || head[1] < 1){
-        gameConfig.state = "gameover";
-        clearInterval(gameConfig.interval);
-
-        $("#startGame").show();
-    } else if (head[0] > 30 || head[1] > 30) {
-        gameConfig.state = "gameover";
-        clearInterval(gameConfig.interval);
-
-        $("#startGame").show();
-    } else {
-        var idHead = parseInt($("[x-tile=" + head[0] + "][y-tile=" + head[1] + "]").attr("id").split("-")[1]);
+    var checkCollision;
     
+    // Check the collision into the walls;
+    checkCollision = (head[0] < 1 || head[1] < 1) || (head[0] > 30 || head[1] > 30) ? true : false;
+
+    // Check snake collision into itself;
+    snakeConfig.snakePos.forEach(elem => {
+        if ( (elem[0] === head[0]) && (elem[1] === head[1]) ) {
+            checkCollision = true;
+        }
+    });
+
+    if (checkCollision) {
+        gameConfig.state = "gameover";
+        clearInterval(gameConfig.interval);
+
+        // Able the button again
+        $("#startGame").show();
+
+        return false;
+    }else{
+        var idHead = parseInt($("[x-tile=" + head[0] + "][y-tile=" + head[1] + "]").attr("id").split("-")[1]);
+
         if (idHead === appleConfig.location) {
             consumeApple();
             growSnake();
         }
-
+    
         snakeConfig.snakePos.pop();
         snakeConfig.snakePos.unshift(head);
-    }
-
+    }    
 }
 
 function growSnake() {
