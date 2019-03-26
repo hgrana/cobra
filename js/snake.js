@@ -18,7 +18,7 @@ function generateSnake(movement = null) {
 
 //Snake's primal function;
 function snakeMovement() {
-    gameConfig.gameInterval = setInterval(() => {
+    gameConfig.interval = setInterval(() => {
         let snakeHead = [...snakeConfig.snakePos[0]];
 
         switch (snakeConfig.direction) {
@@ -57,15 +57,28 @@ function snakeMovement() {
 }
 
 function moveSnake(head) {
-    var idHead = parseInt($("[x-tile=" + head[0] + "][y-tile=" + head[1] + "]").attr("id").split("-")[1]);
+    if (head[0] < 1 || head[1] < 1){
+        gameConfig.state = "gameover";
+        clearInterval(gameConfig.interval);
+
+        $("#startGame").show();
+    } else if (head[0] > 30 || head[1] > 30) {
+        gameConfig.state = "gameover";
+        clearInterval(gameConfig.interval);
+
+        $("#startGame").show();
+    } else {
+        var idHead = parseInt($("[x-tile=" + head[0] + "][y-tile=" + head[1] + "]").attr("id").split("-")[1]);
     
-    if (idHead === appleConfig.location) {
-        consumeApple();
-        growSnake();
+        if (idHead === appleConfig.location) {
+            consumeApple();
+            growSnake();
+        }
+
+        snakeConfig.snakePos.pop();
+        snakeConfig.snakePos.unshift(head);
     }
 
-    snakeConfig.snakePos.pop();
-    snakeConfig.snakePos.unshift(head);
 }
 
 function growSnake() {
