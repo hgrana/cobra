@@ -53,9 +53,15 @@ function generateMap() {
     generateSnake(true);
     generateApple();
 
-    // Remove the button
+    // Hide the button
     $("#startGame").hide();
 
     // Set the game state to running;
-    gameConfig.state = "running";
+    gameConfig.state = "running";    
+}
+
+// Count points and print it;
+function countPoints() {    
+    gameConfig.points += 10;
+    $("#points span").text(gameConfig.points);
 }
