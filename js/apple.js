@@ -19,8 +19,9 @@ function generateApple() {
     $("#tile-"+appleConfig.location).addClass("appleTile");
 }
 
+// Remove the apple from the map and generate it elsewhere;
 function consumeApple() {
-    // Remove the apple from the map and generate it elsewhere;
     $(".mapTile").removeClass("appleTile");
     generateApple();
+    countPoints();
 }

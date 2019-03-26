@@ -69,9 +69,6 @@ function moveSnake(head) {
 }
 
 function growSnake() {
-    var lastPiece = [...snakeConfig.snakePos[snakeConfig.snakePos.length-1]];
-
-    // lastPiece[1] -= 1;
-
+    var lastPiece = [...snakeConfig.snakePos[snakeConfig.snakePos.length-1]];    
     snakeConfig.snakePos.push(lastPiece);
 }

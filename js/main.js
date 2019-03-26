@@ -10,7 +10,8 @@ const downKey = 40;
 const gameConfig = {
     gameSpeed: 100,
     gameState: "stopped",
-    gameInterval: null
+    gameInterval: null,
+    points: 0
 }
 
 const snakeConfig = {
