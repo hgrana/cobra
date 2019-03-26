@@ -43,3 +43,9 @@ function generateMap() {
     // Remove the button
     $("#startGame").remove();
 }
+
+// Count points and print it;
+function countPoints() {    
+    gameConfig.points += 10;
+    $("#points span").text(gameConfig.points);
+}
