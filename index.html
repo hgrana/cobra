@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Cobra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- my scripts -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
     <script src="js/main.js"></script>
+    <script src="js/apple.js"></script>
+    <script src="js/snake.js"></script>
 </head>
+
 <body>
     <h1>Cobra</h1>
+
+    <p id="points">Points: <span>0</span></p>    
+
+    <input id="startGame" value="Start Game!" type="button">
+
+    <div id="map"></div>
 </body>
+<script>
+    $("#startGame").click(() => {
+        gameConfig.gameState = "running";
+        generateMap();
+    });
+
+    $(document).keydown((key) => {
+        switch (key.keyCode) {
+            case gameConfig.controls.upKey:
+                if (snakeConfig.direction !== 2) snakeConfig.direction = 0;
+
+                break;
+
+            case gameConfig.controls.rightKey:
+                if (snakeConfig.direction !== 3) snakeConfig.direction = 1;
+
+                break;
+
+            case gameConfig.controls.downKey:
+                if (snakeConfig.direction !== 0) snakeConfig.direction = 2;
+
+                break;
+
+            case gameConfig.controls.leftKey:
+                if (snakeConfig.direction !== 1) snakeConfig.direction = 3;
+
+                break;
+
+            default:
+                break;
+        }        
+    })
+</script>
+
 </html>
