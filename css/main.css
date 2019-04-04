@@ -9,6 +9,7 @@ body{
     background-color: #bebebe;
     margin: 0px;
     padding: 0px;
+    font-family: 'Calibri', sans-serif;
 }
 
 input{
@@ -22,6 +23,10 @@ input{
 
 p, h1{
     text-align: center;
+}
+
+a{
+    color: #000;
 }
 
 #map {
